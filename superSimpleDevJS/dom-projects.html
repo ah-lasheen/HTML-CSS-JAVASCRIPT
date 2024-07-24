@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="
+      subscribeButtonClicked();
+      " class="subscribeButton">
+      Subscribe
+    </button>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <input placeholder="Cost of order"
+      class="input" onkeydown="
+        handleCostKeyDown();
+      " 
+    >
+
+    <button onclick="calculateButtonClicked()">Calculate</button>
+
+    <p class="costOutput"></p>
+    
+    <script>
+      
+      //window is a built in object that represents the whole screen, not just the webpage
+
+      function handleCostKeyDown() {
+        if (event.key === 'Enter') {
+          calculateButtonClicked(event);
+        }
+      }
+
+      function calculateButtonClicked(event) {
+        const inputElememt = document.querySelector('.input')
+        let cost = Number(inputElememt.value);
+
+        if (cost < 40) {
+          cost = cost + 10;
+        }
+
+        document.querySelector('.costOutput').innerHTML = `$${cost}`;
+      }
+
+      function subscribeButtonClicked() {
+        const subscribeButton = document.querySelector('.subscribeButton');
+
+        if (subscribeButton.innerHTML === 'Subscribed') {
+          subscribeButton.innerHTML = 'Subscribe';
+        } 
+        else {
+          subscribeButton.innerHTML = 'Subscribed';
+        }
+      }  
+    </script>
+  </body>
+<html>

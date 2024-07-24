@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+    <style>
+      body {
+        font-family: 'Times New Roman';
+      }
+      
+      .cssSubscribeButton {
+        border: none;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: bold;
+        border-radius: 100px;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+      
+      .cssInput {
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      .cssCalculate {
+        padding: 12px 15px;
+        background-color: green;
+        color: white;
+        font-size: 15px;
+        font-family: 'Times New Roman';
+        border: none;
+        cursor: pointer;
+      }
+
+    </style>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="
+      subscribeButtonClicked();
+      " class="subscribeButton cssSubscribeButton">
+      Subscribe
+    </button>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+    <input placeholder="Cost of order"
+      class="input cssInput" onkeydown="
+        handleCostKeyDown();
+      " 
+    >
+
+    <button onclick="calculateButtonClicked()" class="cssCalculate">Calculate</button>
+
+    <p class="costOutput"></p>
+    
+    <script>
+      
+      //window is a built in object that represents the whole screen, not just the webpage
+
+      function handleCostKeyDown() {
+        if (event.key === 'Enter') {
+          calculateButtonClicked(event);
+        }
+      }
+
+      function calculateButtonClicked(event) {
+        const inputElememt = document.querySelector('.input')
+        let cost = Number(inputElememt.value);
+
+        if (cost < 40) {
+          cost = cost + 10;
+        }
+
+        document.querySelector('.costOutput').innerHTML = `$${cost}`;
+      }
+
+      function subscribeButtonClicked() {
+        const subscribeButton = document.querySelector('.subscribeButton');
+
+        if (subscribeButton.innerText === 'Subscribe') {
+          subscribeButton.innerHTML = 'Subscribed';
+          subscribeButton.classList.add('is-subscribed');
+        } 
+        else {
+          subscribeButton.innerHTML = 'Subscribe';
+          subscribeButton.classList.remove('is-subscribed');
+        }
+
+
+
+      }  
+    </script>
+  </body>
+<html>

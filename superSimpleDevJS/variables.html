@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Variables</title>
+  </head>
+  <body>
+    <script>
+      let variable_1 = 2;
+      let variable_2 = 'I love you ';
+      console.log(variable_2 + 2);
+
+      variable_1 = 5;
+      variable_1 = 'kys';
+      console.log(variable_1 + 2);
+
+      function add(a, b) {
+        return a + b;
+      }
+
+      function calculate(a, b, operation) {
+        return operation(a, b);
+      }
+
+      let result = calculate(5, 3, add);
+      console.log(result); // 8
+
+
+    </script>
+  </body>
+</html>

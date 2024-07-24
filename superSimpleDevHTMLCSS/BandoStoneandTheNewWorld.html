@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album Rating Calculator</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      background-color: #494545; /* Set your desired background color here */
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .text {
+      font-weight: bold;
+      font-size: 34px;
+      font-family: Arial;
+      font-style: italic;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      color: rgb(60, 212, 73);
+    }
+    .input {
+      border-width: 1px;
+      border-color: white;
+      padding: 11.5px 20px;
+      background-color: #494545;
+      color: white;
+      font-weight: normal;
+      font-size: 16px;
+      font-family: 'Times New Roman';
+      margin-top: 0px;
+    }
+    .input::placeholder {
+      color: rgba(255, 255, 255, 0.781); /* Change the color of the placeholder text */
+      opacity: 1; /* Ensures the opacity is consistent across different browsers */
+    }
+    .calculateButton {
+      border-width: 1px;
+      border-color: white;
+      background-color: #494545;
+      color: white;
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 16px;
+      font-family: 'Times New Roman';
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .calculateButton:hover {
+      opacity: 0.8;
+    }
+    .calculateButton:active {
+      opacity: 0.6;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 18px;
+      font-family: 'Times New Roman';
+      color: white;
+    }
+    .tracks {
+      font-size: 18px;
+      font-family: 'Times New Roman';
+      color: white;
+    }
+    .tracksSelect {
+      border-width: 1px;
+      border-color: white;
+      background-color: #494545;
+      color: white;
+      font-size: 16px;
+      padding: 11px;
+      font-family: 'Times New Roman';
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .tracksSelect:hover {
+      opacity: 0.8;
+    }
+    .tracksSelect:active {
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="text">Album Rating Calculator</p>
+    <label class="tracks">First, select the number of tracks in the album:</label>
+    <select class="tracksSelect" id="tracksSelect">
+      <option value="1">1 Tracks</option>
+      <option value="2">2 Tracks</option>
+      <option value="3">3 Tracks</option>
+      <option value="4">4 Tracks</option>
+      <option value="5">5 Tracks</option>
+      <option value="6">6 Tracks</option>
+      <option value="7">7 Tracks</option>
+      <option value="8">8 Tracks</option>
+      <option value="9">9 Tracks</option>
+      <option value="10">10 Tracks</option>
+      <option value="11">11 Tracks</option>
+      <option value="12">12 Tracks</option>
+      <option value="13">13 Tracks</option>
+      <option value="14">14 Tracks</option>
+      <option value="15">15 Tracks</option>
+      <option value="16">16 Tracks</option>
+      <option value="17">17 Tracks</option>
+      <option value="18">18 Tracks</option>
+      <option value="19">19 Tracks</option>
+      <option value="20">20 Tracks</option>
+    </select>
+    <input class="input" id="ratingInput" placeholder="Enter your song ratings" onkeydown="takeInput(event)">
+    <button class="calculateButton" onclick="calculateAvg()">Calculate</button>
+    <p class="output"></p>
+  </div>
+
+  <script>
+    let array = [];
+    
+    function takeInput(event) {
+      if (event.key === 'Enter' || event.keyCode === 13) {
+        if (array.length < document.getElementById('tracksSelect').value) {
+          document.querySelector('p.output').innerHTML = ``;
+          let inputElement = document.getElementById('ratingInput');
+          let inputValue = inputElement.value;
+          array.push(inputValue);
+          inputElement.value = '';
+          console.log(array);
+        }
+        else {
+          document.querySelector('p.output').innerHTML = `You cannot add more ratings as there are not enough tracks on this album`;
+        }    
+      }
+    }
+
+    function calculateAvg() {
+      let total = 0;
+      for (let i = 0; i < array.length; i++) {
+        total += Number(array[i]);
+      }
+      total = total / array.length;
+      console.log(total);
+      
+      if(isNaN(total)) {
+        document.querySelector('p.output').innerHTML = `Enter your rating of each song first, then calculate again`;
+      }
+      else {
+        if ((Math.round(total * 100) / 100) < 3) {
+          document.querySelector('p.output').innerHTML = `This album is rated a: ${Math.round(total * 100) / 100} / 10. That shit is garbage`;
+        }
+        else if (((Math.round(total * 100) / 100) >= 3) && ((Math.round(total * 100) / 100) < 7)) {
+          document.querySelector('p.output').innerHTML = `This album is rated a: ${Math.round(total * 100) / 100} / 10. Mid album`;
+        }
+        else if (((Math.round(total * 100) / 100) >= 7) && ((Math.round(total * 100) / 100) < 9.5)){
+          document.querySelector('p.output').innerHTML = `This album is rated a: ${Math.round(total * 100) / 100} / 10. This some heat`
+        }
+        else {
+          document.querySelector('p.output').innerHTML = `This album is rated a: ${Math.round(total * 100) / 100} / 10. Perfection`
+        }
+      }
+    }
+  </script>
+</body>
+</html>

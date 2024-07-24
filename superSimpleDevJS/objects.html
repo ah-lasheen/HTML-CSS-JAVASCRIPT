@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+  <body>
+    <script>
+      const value = {
+        name: 'googoogaagaa',
+        price: 500,
+      }
+
+      //the entire object can be displayed and also each individual property inside of the object
+      console.log(value);
+      console.log(value.name);
+      console.log(value.price);
+
+      //properties can also be updated after instantiation
+      value.price = 1000;
+      console.log(value);
+
+      //in addition to adding new properties
+      value.noBitches = true;
+      console.log(value.noBitches , value.name);
+
+      //and deleting old ones
+      delete value.noBitches;
+      console.log(value);
+
+      //type of can also be used with objects
+      if (typeof value == "object") {
+        console.log('Value is an object type');
+      }
+
+      //bracket notation can also be used if there are naming errors with specific property names
+      value.noBitches = true;
+      console.log([value.price]);
+
+      //nested object are also possible
+      const valueTwo = {
+        name: 'googoogaagaa',
+        price: 500,
+        //this is the nested object
+        wins: {
+          win: 'I dont know why I called this wins but yeah',
+          loses: 'yeah idk'
+        }
+      }
+
+      //nested objects can also be called with dot notation or bracket notation as needed
+      console.log(valueTwo.wins.win);
+      console.log(valueTwo.wins);
+
+      //function are able to be nested in object like-so
+      const func = {
+        variable: 'is a random variable',
+        func: function functionFun() {
+          console.log('This is a function nested in an object');
+        }
+      }
+
+      func.func();
+
+      //Converting JS objects to JSON objects can be done with the following code:
+      //JSON.stringify();
+      //note that all outputs will become strings
+      console.log(JSON.stringify(value));
+
+      //Converting JSON objects to JS objects can be done with the following code:
+      //JSON.parse();
+      //outputs will become JS code
+      const jsonString = JSON.stringify(value);
+      console.log(JSON.parse(jsonString));
+
+    </script>
+  </body>
+<html>

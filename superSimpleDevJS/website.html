@@ -1,0 +1,80 @@
+<!-- 
+  All features of code displayed in html are called elements in the case of <button>
+  the button is called an element and the entire thing of <button> </button> is called
+  an HTML tag. The HTML tag which contains no slash before the element is called the
+  starting tag and the tag which contains the slash before the element is called the
+  closing tag. Between the tags is the content of the display
+-->
+
+<!-- DOCTYPE tells browser to use a modern version of html to interpret code -->
+<!DOCTYPE html>
+<!-- html element is what will contain all of our website's information -->
+<html>
+<!-- Contains information that is not displayed on the page (styling etc) -->
+  <head>
+    <!-- Title element creates a title for the tab on the browser -->
+    <title>HTML / CSS Review</title>
+
+    <!-- 
+      CSS code is written inside the HTML element called style
+
+      Button is called a CSS selector which selects which elements to change
+
+      background-color, color, and border are all CSS styles which are used to change
+      the element appearance. background-color, color, and border are in themselves
+      called CSS properties and red, white and none (respectfully) are called CSS values
+    -->
+    <style>
+      .red-button {
+        background-color: red;
+        color: white;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <!-- body element contains everything that is visible on the web page -->
+  <body>
+    
+    <!-- 
+      <button> creates a button on the website 
+
+      title is an HTML attribute used to create a hilighted box that will appear (tooltip) 
+      when the element is hovered over on the website. 
+
+      class attribute adds a label to a specific element for unique styling
+    -->
+    <button title="This button says hello!" class="red-button"
+    
+    onclick="
+      alert('Good job!')
+    "
+    >
+      Hello
+    </button>
+
+    <!-- <p> creates a paragraph of text -->
+    <p>
+      Paragraph of text
+    </p>
+
+    <!-- 
+      In the following code, the Button element is inside of the paragraph element,
+      this is called embedding elements and displays the elements within each other
+    -->
+    <p>
+      Paragraph of 
+      <Button>
+        Text
+      </Button>
+    </p>
+
+    <!-- script element allows javascript to be used in an html file-->
+    <script>
+      // This is a comment and since we are inside the script element, we use // instead of <!-- --> because this is the javascript and css syntax for comments
+      alert('Hello');
+    </script>
+
+  </body>
+  
+</html>
