@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button onclick="
+        subscribe();
+    " class="subscribeButton">Subscribe</button>
+    <script>
+      const status = document.querySelector('.subscribeButton');
+      function subscribe () {
+        if (status.innerText === 'Subscribe') {
+          status.innerHTML = 'Subscribed';
+        } else {
+          status.innerHTML = 'Subscribe';
+        }
+      }
+    </script>
+  </body>
+</html>
